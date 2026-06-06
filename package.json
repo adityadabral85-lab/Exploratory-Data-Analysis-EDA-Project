@@ -1,0 +1,10 @@
+{
+  "name": "prism-eda-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A polished, dependency-free exploratory data analysis dashboard.",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node tests/analytics.test.js"
+  }
+}
