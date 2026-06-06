@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prism — EDA Studio</title>
+  <meta name="description" content="Explore, understand, and communicate your data.">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <aside class="sidebar">
+    <a class="brand" href="#"><span class="brand-mark">P</span><span>PRISM<small>EDA STUDIO</small></span></a>
+    <nav>
+      <button class="nav-item active" data-section="overview"><span>⌁</span> Overview</button>
+      <button class="nav-item" data-section="explore"><span>⌗</span> Explore columns</button>
+      <button class="nav-item" data-section="relations"><span>◇</span> Relationships</button>
+      <button class="nav-item" data-section="quality"><span>✓</span> Data quality</button>
+    </nav>
+    <div class="side-card">
+      <span class="status-dot"></span>
+      <div><strong>Analytics engine</strong><small>Connected & ready</small></div>
+    </div>
+    <p class="version">PRISM / 01.06</p>
+  </aside>
+
+  <main>
+    <header>
+      <div>
+        <p class="eyebrow">WORKSPACE / <span id="datasetName">RETAIL PULSE</span></p>
+        <h1>See what your data<br><em>is really saying.</em></h1>
+      </div>
+      <div class="header-actions">
+        <button class="button secondary" id="downloadBtn">↓ Export report</button>
+        <label class="button primary" for="fileInput">＋ Import CSV</label>
+        <input id="fileInput" type="file" accept=".csv,text/csv" hidden>
+      </div>
+    </header>
+
+    <section class="upload-zone" id="dropZone">
+      <span class="upload-icon">↗</span>
+      <div><strong>Drop another CSV to analyze it</strong><small>Secure, fast analysis up to 8 MB</small></div>
+      <span class="upload-action">Browse file</span>
+    </section>
+
+    <div class="loader" id="loader"><span></span><p>Reading the shape of your data…</p></div>
+    <div id="error" class="error"></div>
+
+    <div id="dashboard" hidden>
+      <section class="section active" id="overview">
+        <div class="section-title">
+          <div><p class="eyebrow">AT A GLANCE</p><h2>Your dataset, distilled.</h2></div>
+          <p id="generatedAt" class="muted"></p>
+        </div>
+        <div class="metric-grid" id="metrics"></div>
+        <div class="grid two-one">
+          <article class="panel">
+            <div class="panel-head"><div><p class="eyebrow">AUTOMATED READOUT</p><h3>Signals worth noticing</h3></div><span class="pill">AI-style summary</span></div>
+            <div id="insights" class="insights"></div>
+          </article>
+          <article class="panel quality-panel">
+            <div class="panel-head"><div><p class="eyebrow">HEALTH CHECK</p><h3>Data quality</h3></div></div>
+            <div id="qualityGauge" class="gauge"></div>
+            <div id="qualityMini" class="quality-mini"></div>
+          </article>
+        </div>
+        <article class="panel">
+          <div class="panel-head"><div><p class="eyebrow">FIRST IMPRESSION</p><h3>Dataset preview</h3></div><span class="muted">First 8 rows</span></div>
+          <div class="table-wrap"><table id="previewTable"></table></div>
+        </article>
+      </section>
+
+      <section class="section" id="explore">
+        <div class="section-title"><div><p class="eyebrow">DEEP DIVE</p><h2>Explore every dimension.</h2></div></div>
+        <div class="explorer">
+          <div class="column-list" id="columnList"></div>
+          <article class="panel column-detail" id="columnDetail"></article>
+        </div>
+      </section>
+
+      <section class="section" id="relations">
+        <div class="section-title"><div><p class="eyebrow">CONNECTIONS</p><h2>Find what moves together.</h2></div></div>
+        <div class="grid two-one">
+          <article class="panel">
+            <div class="panel-head"><div><p class="eyebrow">PEARSON R</p><h3>Correlation matrix</h3></div><span class="pill">Numeric only</span></div>
+            <div id="heatmap" class="heatmap"></div>
+          </article>
+          <article class="panel">
+            <div class="panel-head"><div><p class="eyebrow">TOP LINKS</p><h3>Strongest pairs</h3></div></div>
+            <div id="pairList" class="pair-list"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="quality">
+        <div class="section-title"><div><p class="eyebrow">TRUST THE INPUT</p><h2>Know what needs cleaning.</h2></div></div>
+        <div class="quality-hero" id="qualityHero"></div>
+        <article class="panel">
+          <div class="panel-head"><div><p class="eyebrow">COLUMN AUDIT</p><h3>Completeness & uniqueness</h3></div></div>
+          <div id="auditRows" class="audit-rows"></div>
+        </article>
+      </section>
+    </div>
+  </main>
+  <div class="toast" id="toast"></div>
+  <script src="./analytics.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
